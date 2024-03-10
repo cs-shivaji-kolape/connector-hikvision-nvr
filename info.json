@@ -1,0 +1,227 @@
+{
+    "name": "hikvision",
+    "version": "1.0.2",
+    "label": "Hikvision NVR",
+    "description": "Hikvision's Network Video Recorders (NVRs) provide advanced artificial intelligence capabilities for any connected data stream, even those from conventional security cameras",
+    "publisher": "Islam Baker",
+    "icon_small_name": "333.png",
+    "icon_large_name": "333.png",
+    "category": [
+        "OT & IoT Security"
+    ],
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "server_url",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "The NVR URL "
+            },
+            {
+                "title": "Username",
+                "type": "text",
+                "name": "username",
+                "required": true,
+                "visible": true,
+                "editable": true
+            },
+            {
+                "title": "Password",
+                "type": "password",
+                "name": "password",
+                "required": true,
+                "visible": true,
+                "editable": true
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "get_device_info",
+            "title": "Get NVR Device Details ",
+            "description": "Retrieve NVR Device Details ",
+            "category": "investigation",
+            "annotation": "get_device_info",
+            "output_schema": {},
+            "parameters": [],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "get_ntp_details",
+            "title": "Get NVR Time ",
+            "description": "Retrieve NVR Current Time",
+            "category": "investigation",
+            "annotation": "get_ntp_details",
+            "output_schema": {},
+            "parameters": [],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "get_http_listening_servers",
+            "title": "Get HTTP Listening Servers",
+            "description": "Get parameters of all HTTP listening servers.",
+            "category": "investigation",
+            "annotation": "get_http_listening_servers",
+            "output_schema": {},
+            "parameters": [],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "get_interface",
+            "title": "Get Management Interface",
+            "description": "Retrieve NVR Management Interface",
+            "category": "investigation",
+            "annotation": "get_interface",
+            "output_schema": {},
+            "parameters": [],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "get_channel",
+            "title": "Get Channels",
+            "description": "Retrieves Channels ID For All Cameras",
+            "category": "investigation",
+            "annotation": "get_channel",
+            "parameters": [],
+            "enabled": true,
+            "output_schema": {},
+            "open": false
+        },
+        {
+            "operation": "search_log",
+            "title": "Search Log",
+            "description": "Retrieves Logs",
+            "category": "investigation",
+            "annotation": "search_log",
+            "output_schema": {},
+            "parameters": [
+                {
+                    "title": "Meta ID",
+                    "name": "metaid",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "All",
+                    "tooltip": "Choose Log Type by default All",
+                    "type": "select",
+                    "options": [
+                        "All",
+                        "Infomation",
+                        "Exception",
+                        "Alarm",
+                        "Operation"
+                    ]
+                },
+                {
+                    "title": "Start Date",
+                    "type": "datetime",
+                    "name": "start_date",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "End Date",
+                    "type": "datetime",
+                    "name": "enddate",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Limit",
+                    "tooltip": "Maximum Retrieve Result",
+                    "type": "text",
+                    "name": "limit",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                }
+            ],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "search_video",
+            "title": "Search Videos Recording Details",
+            "description": "Retrieves all Recorded Video",
+            "category": "investigation",
+            "annotation": "search_video",
+            "output_schema": {},
+            "parameters": [
+                {
+                    "title": "Channel ID",
+                    "type": "text",
+                    "name": "trackid",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Start Date",
+                    "type": "datetime",
+                    "name": "start_date",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "End Date",
+                    "type": "datetime",
+                    "name": "enddate",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Limit",
+                    "type": "text",
+                    "name": "limit",
+                    "tooltip": "Maximum Retrieve Result",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                }
+            ],
+            "enabled": true,
+            "open": false
+        },
+        {
+            "operation": "download_video",
+            "title": "Download Videos Recording",
+            "description": "Download Video and store it at tmp folder",
+            "category": "investigation",
+            "annotation": "download_video",
+            "output_schema": {},
+            "parameters": [
+                {
+                    "title": "Channel ID",
+                    "type": "text",
+                    "name": "trackid",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                },
+                {
+                    "title": "Video Name",
+                    "type": "text",
+                    "name": "videoname",
+                    "required": true,
+                    "visible": true,
+                    "editable": true
+                }
+            ],
+            "enabled": true,
+            "open": false
+        }
+    ],
+    "cs_compatible": true,
+    "help_online": ""
+}
