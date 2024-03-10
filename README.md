@@ -102,18 +102,6 @@ None.
 ## Included playbooks
 The `Sample - hikvision - 1.0.2` playbook collection comes bundled with the Hikvision NVR connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR<sup>TM</sup> after importing the Hikvision NVR connector.
 
-- Add Group
-- Add Policy
-- Delete Specific Group
-- Get All Groups Details
-- Get All Policies on Specific Group
-- Get Host Details
-- Get Host Group Static Info
-- Get Host List
-- Get Products Installed
-- Get Software Installed on Specefic Host
-- Get Specific Policy
-- Move Host to Specific Group
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.
 
