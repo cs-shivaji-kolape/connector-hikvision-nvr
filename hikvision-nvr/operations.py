@@ -130,10 +130,6 @@ def get_video_recording_details(config, params):
     end_time = params.get('enddate')
     trackid = params.get('trackid')
     limit = params.get('limit', '')
-    # payload = "<?xml version: \"1.0\" encoding=\"utf-8\"?><CMSearchDescription><searchID>CAA56F7B-4170-0001-9D79-19E020301367</searchID><trackList><trackID>" + str(
-    #     trackid) + "</trackID></trackList><timeSpanList><timeSpan><startTime>" + str(
-    #     start_time) + "</startTime><endTime>" + str(end_time) + "</endTime></timeSpan></timeSpanList><maxResults>" + str(
-    #     limit) + "</maxResults><searchResultPostion>0</searchResultPostion><metadataList><metadataDescriptor>//recordType.meta.std-cgi.com</metadataDescriptor></metadataList></CMSearchDescription>"
     payload = LOG_SEARCH_XML_PAYLOAD.format(trackid=trackid, start_time=start_time, end_time=end_time, limit=limit)
     logger.error("payload: {}".format(payload))
     return hik.make_rest_call(endpoint=endpoint, method='POST', data=payload)
