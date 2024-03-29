@@ -1,14 +1,13 @@
 """
 Copyright start
-Copyright (C) 2008 - 2022 Fortinet Inc.
-All rights reserved.
-FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+MIT License
+Copyright (c) 2024 Fortinet Inc
 Copyright end
 """
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import operations, _check_health
 
-logger = get_logger('hikvision')
+logger = get_logger('hikvision-nvr')
 
 
 class hikvision(Connector):
@@ -24,4 +23,5 @@ class hikvision(Connector):
         try:
             _check_health(config)
         except Exception as e:
+            logger.error(e)
             raise ConnectorError(e)

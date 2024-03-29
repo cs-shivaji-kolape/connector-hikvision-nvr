@@ -1,0 +1,515 @@
+{
+  "name": "hikvision-nvr",
+  "version": "1.0.0",
+  "label": "Hikvision NVR",
+  "description": "Hikvision's Network Video Recorders (NVRs) provide advanced artificial intelligence capabilities for any connected data stream, even those from conventional security cameras",
+  "publisher": "Fortinet CSE",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": [
+    "OT & IoT Security"
+  ],
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "description": "Specify the URL of the Hikvision NVR server to connect and perform automated operations",
+        "tooltip": "Specify the URL of the Hikvision NVR server to connect and perform automated operations",
+        "visible": true,
+        "editable": true
+      },
+      {
+        "title": "Username",
+        "type": "text",
+        "name": "username",
+        "description": "Specify the username to access the Hikvision NVR server to which you will connect and perform automated operations",
+        "tooltip": "Specify the username to access the Hikvision NVR server to which you will connect and perform automated operations",
+        "required": true,
+        "visible": true,
+        "editable": true
+      },
+      {
+        "title": "Password",
+        "type": "password",
+        "name": "password",
+        "description": "Specify the password to access the Hikvision NVR server to which you will connect and perform automated operations",
+        "tooltip": "Specify the password to access the Hikvision NVR server to which you will connect and perform automated operations",
+        "required": true,
+        "visible": true,
+        "editable": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_device_info",
+      "title": "Get NVR Device Details",
+      "description": "Retrieves detailed information about a Network Video Recorder (NVR) device.",
+      "category": "investigation",
+      "annotation": "get_device_info",
+      "output_schema": {
+        "DeviceInfo": {
+          "model": "",
+          "@xmlns": "",
+          "@version": "",
+          "deviceID": "",
+          "deviceName": "",
+          "deviceType": "",
+          "macAddress": "",
+          "manufacturer": "",
+          "serialNumber": "",
+          "telecontrolID": "",
+          "encoderVersion": "",
+          "firmwareVersion": "",
+          "hardwareVersion": "",
+          "encoderReleasedDate": "",
+          "firmwareReleasedDate": ""
+        }
+      },
+      "parameters": [],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "get_ntp_details",
+      "title": "Get NVR Time",
+      "description": "Retrieves the current time settings of a Network Video Recorder (NVR) device",
+      "category": "investigation",
+      "annotation": "get_ntp_details",
+      "output_schema": {
+        "Time": {
+          "@xmlns": "",
+          "@version": "",
+          "timeMode": {
+            "@opt": "",
+            "#text": ""
+          },
+          "timeType": {
+            "@opt": "",
+            "#text": ""
+          },
+          "timeZone": "",
+          "localTime": ""
+        }
+      },
+      "parameters": [],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "get_http_listening_servers",
+      "title": "Get HTTP Listening Servers",
+      "description": "Retrieves information about the HTTP servers running on a device.",
+      "category": "investigation",
+      "annotation": "get_http_listening_servers",
+      "output_schema": {
+        "HttpHostNotificationList": {
+          "@xmlns": "",
+          "@version": "",
+          "HttpHostNotification": {
+            "id": "",
+            "url": "",
+            "@xmlns": "",
+            "portNo": "",
+            "@version": "",
+            "ipAddress": "",
+            "Extensions": {
+              "@xmlns": "",
+              "intervalBetweenEvents": ""
+            },
+            "protocolType": "",
+            "parameterFormatType": "",
+            "addressingFormatType": "",
+            "httpAuthenticationMethod": ""
+          }
+        }
+      },
+      "parameters": [],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "get_interface",
+      "title": "Get Management Interface",
+      "description": "Retrieves information about the management interface settings of a device",
+      "category": "investigation",
+      "annotation": "get_interface",
+      "output_schema": {
+        "NetworkInterfaceList": {
+          "@xmlns": "",
+          "@version": "",
+          "NetworkInterface": {
+            "id": "",
+            "Link": {
+              "MTU": {
+                "@max": "",
+                "@min": "",
+                "#text": ""
+              },
+              "speed": "",
+              "@xmlns": "",
+              "duplex": "",
+              "@version": "",
+              "MACAddress": "",
+              "autoNegotiation": ""
+            },
+            "@xmlns": "",
+            "@version": "",
+            "Discovery": {
+              "UPnP": {
+                "enabled": ""
+              },
+              "@xmlns": "",
+              "@version": "",
+              "Zeroconf": {
+                "enabled": ""
+              }
+            },
+            "IPAddress": {
+              "@xmlns": "",
+              "@version": "",
+              "DNSEnable": "",
+              "ipAddress": "",
+              "ipVersion": "",
+              "PrimaryDNS": {
+                "ipAddress": ""
+              },
+              "subnetMask": "",
+              "SecondaryDNS": {
+                "ipAddress": ""
+              },
+              "DefaultGateway": {
+                "ipAddress": ""
+              },
+              "addressingType": ""
+            },
+            "defaultConnection": ""
+          }
+        }
+      },
+      "parameters": [],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "get_channel",
+      "title": "Get Channels",
+      "description": "Retrieves information about the channels available on a device",
+      "category": "investigation",
+      "annotation": "get_channel",
+      "parameters": [],
+      "enabled": true,
+      "output_schema": {
+        "StreamingChannelList": {
+          "@xmlns": "",
+          "@version": "",
+          "StreamingChannel": [
+            {
+              "id": "",
+              "Video": {
+                "enabled": "",
+                "GovLength": "",
+                "SmartCodec": {
+                  "enabled": ""
+                },
+                "vbrLowerCap": "",
+                "vbrUpperCap": "",
+                "fixedQuality": "",
+                "maxFrameRate": "",
+                "videoScanType": "",
+                "videoCodecType": "",
+                "snapShotImageType": "",
+                "videoResolutionWidth": "",
+                "videoResolutionHeight": "",
+                "dynVideoInputChannelID": "",
+                "videoQualityControlType": ""
+              },
+              "@xmlns": "",
+              "enabled": "",
+              "@version": "",
+              "Transport": {
+                "ControlProtocolList": {
+                  "ControlProtocol": {
+                    "streamingTransport": ""
+                  }
+                }
+              },
+              "channelName": ""
+            }
+          ]
+        }
+      },
+      "open": false
+    },
+    {
+      "operation": "search_log",
+      "title": "Search Log",
+      "description": "Retrieves for specific logs or event records within a device's log database based on various criteria such as time range, log type parameters",
+      "category": "investigation",
+      "annotation": "search_log",
+      "output_schema": {
+        "CMSearchResult": {
+          "@xmlns": "",
+          "@version": "",
+          "searchID": "",
+          "matchList": {
+            "searchMatchItem": [
+              {
+                "logDescriptor": {
+                  "metaId": "",
+                  "localID": "",
+                  "localId": "",
+                  "paraType": "",
+                  "userName": "",
+                  "ipAddress": "",
+                  "StartDateTime": "",
+                  "additionInformation": ""
+                }
+              }
+            ]
+          },
+          "numOfMatches": "",
+          "responseStatus": "",
+          "responseStatusStrg": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "Log Type",
+          "name": "metaid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "All",
+          "tooltip": "Select type of log you want to retrieves",
+          "description": "Select type of log you want to retrieves",
+          "type": "select",
+          "options": [
+            "All",
+            "Infomation",
+            "Exception",
+            "Alarm",
+            "Operation"
+          ]
+        },
+        {
+          "title": "Start Date",
+          "type": "datetime",
+          "name": "start_date",
+          "tooltip": "Specify the starting date from which data should be retrieved.",
+          "description": "Specify the starting date from which data should be retrieved.",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "End Date",
+          "type": "datetime",
+          "name": "enddate",
+          "tooltip": "Specify the end date for data retrieval, up to the specified date",
+          "description": "Specify the end date for data retrieval, up to the specified date",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "Limit",
+          "tooltip": "Specify the maximum number of items or records that should be returned in result",
+          "description": "Specify the maximum number of items or records that should be returned in result",
+          "type": "text",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "get_video_recording_details",
+      "title": "Get Videos Recording Details",
+      "description": "Retrieve detailed information about video recordings stored on a Hikvision device, such as a Network Video Recorder (NVR)",
+      "category": "investigation",
+      "annotation": "get_video_recording_details",
+      "output_schema": {
+        "CMSearchResult": {
+          "@xmlns": "",
+          "@version": "",
+          "searchID": "",
+          "matchList": {
+            "searchMatchItem": [
+              {
+                "trackID": "",
+                "sourceID": "",
+                "timeSpan": {
+                  "endTime": "",
+                  "startTime": ""
+                },
+                "metadataMatches": {
+                  "metadataDescriptor": ""
+                },
+                "mediaSegmentDescriptor": {
+                  "codecType": "",
+                  "contentType": "",
+                  "playbackURI": ""
+                }
+              }
+            ]
+          },
+          "numOfMatches": "",
+          "responseStatus": "",
+          "responseStatusStrg": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "Channel ID",
+          "type": "text",
+          "name": "trackid",
+          "required": true,
+          "tooltip": "Specify the ID of the channel from which you want to retrieve video recording details",
+          "description": "Specify the ID of the channel from which you want to retrieve video recording details",
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "Start Date",
+          "type": "datetime",
+          "name": "start_date",
+          "tooltip": "Specify the starting date from which data should be retrieved.",
+          "description": "Specify the starting date from which data should be retrieved.",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "End Date",
+          "type": "datetime",
+          "name": "enddate",
+          "tooltip": "Specify the end date for data retrieval, up to the specified date",
+          "description": "Specify the end date for data retrieval, up to the specified date",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "Limit",
+          "type": "text",
+          "name": "limit",
+          "tooltip": "Specify the maximum number of items or records that should be returned in result",
+          "description": "Specify the maximum number of items or records that should be returned in result",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "enabled": true,
+      "open": false
+    },
+    {
+      "operation": "download_video",
+      "title": "Download Videos Recording",
+      "description": "Download recorded video footage from a Hikvision device, such as a Network Video Recorder (NVR), and save it in the FortiSOAR attachments module",
+      "category": "investigation",
+      "annotation": "download_video",
+      "output_schema": {
+        "id": "",
+        "@id": "",
+        "cVEs": [],
+        "file": {
+          "id": "",
+          "@id": "",
+          "size": "",
+          "uuid": "",
+          "@type": "",
+          "assignee": "",
+          "filename": "",
+          "metadata": [],
+          "mimeType": "",
+          "thumbnail": "",
+          "uploadDate": ""
+        },
+        "name": "",
+        "type": "",
+        "uuid": "",
+        "@type": "",
+        "tasks": [],
+        "alerts": [],
+        "assets": [],
+        "owners": [],
+        "people": [],
+        "@context": "",
+        "assignee": "",
+        "comments": [],
+        "warrooms": [],
+        "incidents": [],
+        "createDate": "",
+        "createUser": {
+          "id": "",
+          "@id": "",
+          "name": "",
+          "uuid": "",
+          "@type": "",
+          "avatar": "",
+          "userId": "",
+          "userType": "",
+          "createDate": "",
+          "createUser": "",
+          "modifyDate": "",
+          "modifyUser": ""
+        },
+        "indicators": [],
+        "modifyDate": "",
+        "modifyUser": {
+          "id": "",
+          "@id": "",
+          "name": "",
+          "uuid": "",
+          "@type": "",
+          "avatar": "",
+          "userId": "",
+          "userType": "",
+          "createDate": "",
+          "createUser": "",
+          "modifyDate": "",
+          "modifyUser": ""
+        },
+        "recordTags": [],
+        "userOwners": [],
+        "workspaces": [],
+        "description": "",
+        "vulnerabilities": []
+      },
+      "parameters": [
+        {
+          "title": "Channel ID",
+          "type": "text",
+          "name": "trackid",
+          "tooltip": "Specify the ID of the channel from which you want to download the video recording.",
+          "description": "Specify the ID of the channel from which you want to download the video recording.",
+          "required": true,
+          "visible": true,
+          "editable": true
+        },
+        {
+          "title": "Video Name",
+          "type": "text",
+          "name": "videoname",
+          "tooltip": "Specify the name of the video recording which you want to download.",
+          "description": "Specify the name of the video recording which you want to download",
+          "required": true,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "enabled": true,
+      "open": false
+    }
+  ],
+  "cs_compatible": true,
+  "help_online": ""
+}

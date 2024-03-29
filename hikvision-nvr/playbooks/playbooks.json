@@ -1,0 +1,784 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Hikvision NVR - 1.0.0",
+      "description": "Sample playbooks for \"Hikvision NVR\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "",
+      "uuid": "0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+      "id": 271,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Hikvision",
+        "hikvision"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Videos Recording Details",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieve detailed information about video recordings stored on a Hikvision device, such as a Network Video Recorder (NVR)",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692495,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6ff30fb1-6489-45fa-ab00-7a3e51f6d3ed",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Videos Recording Details",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": {
+                  "limit": "100",
+                  "enddate": "2024-03-19T18:30:00.000Z",
+                  "trackid": "301",
+                  "start_date": "2024-03-19T18:30:00.000Z"
+                },
+                "version": "1.0.0",
+                "connector": "hikvision-nvr",
+                "operation": "get_video_recording_details",
+                "operationTitle": "Get Videos Recording Details",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a57c3c15-b555-404e-8a52-893eacce4126"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b4761689-d0e1-4e8c-8515-e9c695316581",
+                "title": "Hikvision NVR: Get Videos Recording Details",
+                "resources": [
+                  "alerts"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6ff30fb1-6489-45fa-ab00-7a3e51f6d3ed"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Search Videos Recording Details",
+              "targetStep": "/api/3/workflow_steps/a57c3c15-b555-404e-8a52-893eacce4126",
+              "sourceStep": "/api/3/workflow_steps/6ff30fb1-6489-45fa-ab00-7a3e51f6d3ed",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d84c5074-e817-4ea6-be8b-9f6de24aa2ba"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "05ea4552-ed13-489f-baba-58f02c6558f9",
+          "id": 3114,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get HTTP Listening Servers",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves information about the HTTP servers running on a device",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692725,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d2efa4bc-9a08-4048-8a54-feb1fe374506",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get HTTP Listening Servers",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "hikvision-nvr",
+                "operation": "get_http_listening_servers",
+                "operationTitle": "Get HTTP Listening Servers",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ab8af63b-80f4-4e03-8a71-81fd332b9d67"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9aea1cfa-afe6-4ca4-9062-131693774c78",
+                "title": "Hikvision NVR: Get HTTP Listening Servers",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d2efa4bc-9a08-4048-8a54-feb1fe374506"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get HTTP Listening Servers",
+              "targetStep": "/api/3/workflow_steps/ab8af63b-80f4-4e03-8a71-81fd332b9d67",
+              "sourceStep": "/api/3/workflow_steps/d2efa4bc-9a08-4048-8a54-feb1fe374506",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9a5b8c57-a513-48e3-a6bc-0dc7d1c972cd"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "0a502204-906f-40ca-8436-c9ec3d1dc5b9",
+          "id": 3115,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Log",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves for specific logs or event records within a device's log database based on various criteria such as time range, log type parameters",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692477,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ce7489a4-0f8c-4526-aaa3-8d379be573df",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Log",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": {
+                  "limit": "100",
+                  "metaid": "Alarm",
+                  "enddate": "2024-03-28T05:18:36.289Z",
+                  "start_date": "2024-03-25T18:30:00.000Z"
+                },
+                "version": "1.0.0",
+                "connector": "hikvision-nvr",
+                "operation": "search_log",
+                "operationTitle": "Search Log",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9c210bff-dc76-4ae8-89e2-6a136f5aa4c3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "15f94062-de96-43d2-b0bd-9f48c6c34a79",
+                "title": "Hikvision NVR: Search Log",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "ce7489a4-0f8c-4526-aaa3-8d379be573df"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Search Log",
+              "targetStep": "/api/3/workflow_steps/9c210bff-dc76-4ae8-89e2-6a136f5aa4c3",
+              "sourceStep": "/api/3/workflow_steps/ce7489a4-0f8c-4526-aaa3-8d379be573df",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "341db14a-2669-4e1a-b562-576a9414f43a"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "2fd08aaf-12cd-478b-9a27-f846ae3df785",
+          "id": 3116,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get NVR Time",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves the current time settings of a Network Video Recorder (NVR) device",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692708,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f5721980-e90e-4a0f-9add-bb62c8a51b89",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get NVR Time",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": [],
+                "version": "1.0.2",
+                "connector": "hikvision-nvr",
+                "operation": "get_ntp_details",
+                "operationTitle": "Get NVR Time",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "90ec9c55-7ded-4596-b975-2a5f82152308"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "3ca7c375-b243-4725-a3d0-d76171d8ef7c",
+                "title": "Hikvision NVR: Get NVR Time",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f5721980-e90e-4a0f-9add-bb62c8a51b89"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get NVR Time",
+              "targetStep": "/api/3/workflow_steps/90ec9c55-7ded-4596-b975-2a5f82152308",
+              "sourceStep": "/api/3/workflow_steps/f5721980-e90e-4a0f-9add-bb62c8a51b89",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "831acf16-4f07-4ab6-a7e5-e1078a458f06"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "3f17b09a-a7fa-42a0-b5d0-4000b5fc6cfb",
+          "id": 3117,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Management Interface",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves information about the management interface settings of a device",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692740,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/c5845652-eb09-4d00-aea9-1ce54c31fa43",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Management Interface",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": [],
+                "version": "1.0.2",
+                "connector": "hikvision-nvr",
+                "operation": "get_interface",
+                "operationTitle": "Get Management Interface",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d3f21357-5cee-48f9-9e2e-5da1c51790ba"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4c33fd00-0c3e-4f45-af0b-96bdf01a9f80",
+                "title": "Hikvision NVR: Get Management Interface",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "c5845652-eb09-4d00-aea9-1ce54c31fa43"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Management Interface",
+              "targetStep": "/api/3/workflow_steps/d3f21357-5cee-48f9-9e2e-5da1c51790ba",
+              "sourceStep": "/api/3/workflow_steps/c5845652-eb09-4d00-aea9-1ce54c31fa43",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "056c6319-eb6b-4e56-9de5-5b8016c0cfdd"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "453da2a8-65ed-46d6-93dd-aa97ccdb01a7",
+          "id": 3118,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Channels",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves information about the channels available on a device",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692753,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3cf96e3a-80f8-49e2-9c82-aeb620dee244",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Channels",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": [],
+                "version": "1.0.2",
+                "connector": "hikvision-nvr",
+                "operation": "get_channel",
+                "operationTitle": "Get Channels",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8398f1d0-fbf6-4a94-8dc6-f0620a0b3973"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ebad9707-f27d-4eba-aa00-d6a84f6a0b3a",
+                "title": "Hikvision NVR: Get Channels",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "3cf96e3a-80f8-49e2-9c82-aeb620dee244"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Channels",
+              "targetStep": "/api/3/workflow_steps/8398f1d0-fbf6-4a94-8dc6-f0620a0b3973",
+              "sourceStep": "/api/3/workflow_steps/3cf96e3a-80f8-49e2-9c82-aeb620dee244",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "8141cfd0-3926-4fbf-b452-9e150e36e4ad"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "c64ede3e-eec3-4d14-ac04-333c60eb0b98",
+          "id": 3119,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Download Videos Recording",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Download recorded video footage from a Hikvision device, such as a Network Video Recorder (NVR), and save it in the FortiSOAR attachments module",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692636,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/14f1c1cd-9d09-42c9-b20e-177de7ed5b40",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Download Videos Recording",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "e16cfcbb-8b9f-4bb7-a2ff-e8fd450976e9",
+                "params": {
+                  "trackid": "301",
+                  "videoname": "00000000059013701"
+                },
+                "version": "1.0.0",
+                "connector": "hikvision-nvr",
+                "operation": "download_video",
+                "operationTitle": "Download Videos Recording",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a6b2e5c3-afb1-46d0-b692-2908731b1561"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "fb2f79c3-d129-436b-b717-a154f70d9ac4",
+                "title": "Hikvision NVR: Download Videos Recording",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "14f1c1cd-9d09-42c9-b20e-177de7ed5b40"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Download Videos Recording",
+              "targetStep": "/api/3/workflow_steps/a6b2e5c3-afb1-46d0-b692-2908731b1561",
+              "sourceStep": "/api/3/workflow_steps/14f1c1cd-9d09-42c9-b20e-177de7ed5b40",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5722d142-3472-4739-b3f7-19c1488824dc"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "f7a27eab-6138-4a21-8c62-fc8ccc889ecb",
+          "id": 3120,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get NVR Device Details",
+          "aliasName": null,
+          "tag": "#Hikvision NVR",
+          "description": "Retrieves detailed information about a Network Video Recorder (NVR) device",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1711692695,
+          "collection": "/api/3/workflow_collections/0ed983fc-74ed-43f0-a1cb-0abd08f2f049",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6e2ed233-ec53-43fc-b853-2233eb4a9ab9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get NVR Device Details",
+              "description": null,
+              "arguments": {
+                "name": "Hikvision NVR",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "hikvision-nvr",
+                "operation": "get_device_info",
+                "operationTitle": "Get NVR Device Details",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d82cf666-9285-4807-bb0b-5abf35435d22"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "43e8bda8-7f4a-4f2e-8894-8ca2481a44a8",
+                "title": "Hikvision NVR: Get NVR Device Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6e2ed233-ec53-43fc-b853-2233eb4a9ab9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get NVR Device Details",
+              "targetStep": "/api/3/workflow_steps/d82cf666-9285-4807-bb0b-5abf35435d22",
+              "sourceStep": "/api/3/workflow_steps/6e2ed233-ec53-43fc-b853-2233eb4a9ab9",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "e1ade46d-bf22-412f-93ca-936b55dafa6e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "fa57bf09-d6fc-432b-bf76-1f3d5ee09e39",
+          "id": 3121,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Hikvision",
+            "hikvision-nvr"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Hikvision",
+    "hikvision",
+    "hikvision-nvr"
+  ]
+}
