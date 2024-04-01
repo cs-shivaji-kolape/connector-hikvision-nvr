@@ -32,6 +32,7 @@ class hikvision(object):
     def __init__(self, config, *args, **kwargs):
         self.username = config.get('username')
         self.password = config.get('password')
+        self.verify_ssl = config.get('verify_ssl')
         self.url = config.get('server_url', '').strip('/')
         if not self.url.startswith('https://') and not self.url.startswith('http://'):
             self.url = 'http://{0}'.format(self.url)
@@ -45,7 +46,7 @@ class hikvision(object):
             url = self.url + endpoint
             logger.debug('Rest API Endpoint {0}'.format(url))
             auth = requests.auth.HTTPDigestAuth(self.username, self.password)
-            response = requests.request(method, url, auth=auth, data=data)
+            response = requests.request(method, url, auth=auth, data=data, verify=self.verify_ssl)
             logger.debug('Rest API Status Code: {0}'.format(response.status_code))
             # logger.debug('Rest API Response: {0}'.format(response.text))
             if response.ok:
