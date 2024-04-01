@@ -48,7 +48,11 @@ class hikvision(object):
             auth = requests.auth.HTTPDigestAuth(self.username, self.password)
             response = requests.request(method, url, auth=auth, data=data, verify=self.verify_ssl)
             logger.debug('Rest API Status Code: {0}'.format(response.status_code))
-            # logger.debug('Rest API Response: {0}'.format(response.text))
+            try:
+                from connectors.debug_utils.curl_script import make_curl
+                make_curl(method, url, headers=headers, params=params, data=data, verify_ssl=self.verify_ssl)
+            except Exception:
+                pass
             if response.ok:
                 content_type = response.headers.get('Content-Type')
                 if response.content != "" and 'application/xml' in content_type:
