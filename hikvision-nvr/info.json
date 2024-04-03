@@ -6,7 +6,7 @@
   "publisher": "Fortinet CSE",
   "cs_approved": false,
   "cs_compatible": true,
-  "help_online": "https://github.com/fortinet-fortisoar/connector-shadowserver/blob/release/1.0.0/docs/HikvisionNVRDoc.md",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-hikvision-nvr/blob/release/1.0.0/docs/HikvisionNVRDoc.md",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "category": [
