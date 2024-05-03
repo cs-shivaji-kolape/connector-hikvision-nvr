@@ -8,7 +8,7 @@ Connector Version: 1.0.0
 
 Contributors: Islam Baker
 
-Authored By: Fortinet CSE
+Authored By: Fortinet SE KSA 
 
 Certified: No
 ## Installing the connector
