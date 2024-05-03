@@ -14,7 +14,7 @@ from connectors.core.connector import get_logger, ConnectorError
 from connectors.cyops_utilities.builtins import upload_file_to_cyops
 from django.conf import settings
 
-from .constants import (DEFAULT_EXTENSION, LOG_SEARCH_XML_PAYLOAD)
+from .constants import (DEFAULT_EXTENSION, LOG_SEARCH_XML_PAYLOAD, GET_VIDEO_RECORDING_XML_PAYLOAD)
 
 error_msgs = {
     400: 'Bad/Invalid Request',
@@ -106,7 +106,6 @@ def search_log(config, params):
     else:
         metaID = "log.std-cgi.com"
     payload = LOG_SEARCH_XML_PAYLOAD.format(metaID=metaID.strip(), start_time=start_time, end_time=end_time, limit=limit)
-    logger.error("payload: {}".format(payload))
     return hik.make_rest_call(endpoint=endpoint, method='POST', data=payload)
 
 
@@ -135,8 +134,7 @@ def get_video_recording_details(config, params):
     end_time = params.get('enddate')
     trackid = params.get('trackid')
     limit = params.get('limit', '')
-    payload = LOG_SEARCH_XML_PAYLOAD.format(trackid=trackid, start_time=start_time, end_time=end_time, limit=limit)
-    logger.error("payload: {}".format(payload))
+    payload = GET_VIDEO_RECORDING_XML_PAYLOAD.format(trackid=trackid, start_time=start_time, end_time=end_time, limit=limit)
     return hik.make_rest_call(endpoint=endpoint, method='POST', data=payload)
 
 
