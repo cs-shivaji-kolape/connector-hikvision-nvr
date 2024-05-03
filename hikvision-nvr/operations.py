@@ -63,16 +63,21 @@ class hikvision(object):
                     return response.content
             else:
                 raise ConnectorError("{0}".format(error_msgs.get(response.status_code), response.text))
-        except requests.exceptions.SSLError:
+        except requests.exceptions.SSLError as err:
+            logger.error("error: {}".format(err))
             raise ConnectorError('SSL certificate validation failed')
-        except requests.exceptions.ConnectTimeout:
+        except requests.exceptions.ConnectTimeout as err:
+            logger.error("error: {}".format(err))
             raise ConnectorError('The request timed out while trying to connect to the server')
-        except requests.exceptions.ReadTimeout:
+        except requests.exceptions.ReadTimeout as err:
+            logger.error("error: {}".format(err))
             raise ConnectorError(
                 'The server did not send any data in the allotted amount of time')
-        except requests.exceptions.ConnectionError:
+        except requests.exceptions.ConnectionError as err:
+            logger.error("error: {}".format(err))
             raise ConnectorError('Invalid endpoint or credentials')
         except Exception as err:
+            logger.error("error: {}".format(err))
             raise ConnectorError(str(err))
 
 
