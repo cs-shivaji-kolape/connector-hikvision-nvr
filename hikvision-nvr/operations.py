@@ -13,7 +13,7 @@ import xmltodict
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.cyops_utilities.builtins import upload_file_to_cyops
 from django.conf import settings
-
+from connectors.cyops_utilities.builtins import save_file_in_env
 from .constants import (DEFAULT_EXTENSION, LOG_SEARCH_XML_PAYLOAD, GET_VIDEO_RECORDING_XML_PAYLOAD)
 
 error_msgs = {
@@ -83,19 +83,19 @@ def login(config, params):
     return response
 
 
-def get_channel(config, params):
+def get_channel(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/Streaming/channels'
     return hik.make_rest_call(endpoint=endpoint, method='GET')
 
 
-def get_interface(config, params):
+def get_interface(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/System/Network/interfaces'
     return hik.make_rest_call(endpoint=endpoint, method='GET')
 
 
-def search_log(config, params):
+def search_log(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/ContentMgmt/logSearch'
     start_time = params.get('start_date')
@@ -109,25 +109,25 @@ def search_log(config, params):
     return hik.make_rest_call(endpoint=endpoint, method='POST', data=payload)
 
 
-def get_http_listening_servers(config, params):
+def get_http_listening_servers(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/Event/notification/httpHosts'
     return hik.make_rest_call(endpoint=endpoint, method='GET')
 
 
-def get_device_info(config, params):
+def get_device_info(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/System/deviceInfo'
     return hik.make_rest_call(endpoint=endpoint, method='GET')
 
 
-def get_ntp_details(config, params):
+def get_ntp_details(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/System/time/capabilities'
     return hik.make_rest_call(endpoint=endpoint, method='GET')
 
 
-def get_video_recording_details(config, params):
+def get_video_recording_details(config, params, **kwargs):
     hik = hikvision(config)
     endpoint = '/ISAPI/ContentMgmt/search'
     start_time = params.get('start_date')
@@ -138,7 +138,8 @@ def get_video_recording_details(config, params):
     return hik.make_rest_call(endpoint=endpoint, method='POST', data=payload)
 
 
-def download_video(config, params):
+def download_video(config, params, **kwargs):
+    env = kwargs.get('env', {})
     hik = hikvision(config)
     create_attachment= params.get('create_fortisoar_attachment')
     url = config.get('server_url').replace("http://", "")
@@ -153,6 +154,7 @@ def download_video(config, params):
     path = join(settings.TMP_FILE_ROOT, file_name)
     with open(path, 'wb') as fp:
         fp.write(video_content)
+    save_file_in_env(env, path)
     if create_attachment:
         attach_response = upload_file_to_cyops(file_path=file_name, filename=file_name,
                                            name=file_name, create_attachment=True)

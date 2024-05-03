@@ -14,7 +14,7 @@ class hikvision(Connector):
     def execute(self, config, operation, operation_params, **kwargs):
         try:
             operation = operations.get(operation)
-            return operation(config, operation_params)
+            return operation(config, operation_params, **kwargs)
         except Exception as err:
             logger.error('{0}'.format(err))
             raise ConnectorError('{0}'.format(err))
