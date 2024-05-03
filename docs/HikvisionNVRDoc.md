@@ -303,7 +303,9 @@ The output contains the following populated JSON schema:
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Channel ID</td><td>Specify the ID of the channel from which you want to download the video recording.
 </td></tr><tr><td>Video Name</td><td>Specify the name of the video recording which you want to download
+</td></tr><tr><td>Create FortiSOAR Attachments</td><td>SIf the user wants to create an Attachment record in the FortiSAOR attachment module, then select this option. Otherwise, it stores the recording in the /tmp directory
 </td></tr></tbody></table>
+
 #### Output
 The output contains the following populated JSON schema:
 

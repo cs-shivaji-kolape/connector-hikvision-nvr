@@ -517,6 +517,17 @@
           "required": true,
           "visible": true,
           "editable": true
+        },
+        {
+          "title": "Create FortiSOAR Attachments",
+          "type": "checkbox",
+          "name": "create_fortisoar_attachment",
+          "tooltip": "If the user wants to create an Attachment record in the FortiSAOR attachment module, then select this option. Otherwise, it stores the recording in the /tmp directory",
+          "description": "If the user wants to create an Attachment record in the FortiSAOR attachment module, then select this option. Otherwise, it stores the recording in the /tmp directory",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false
         }
       ],
       "enabled": true,

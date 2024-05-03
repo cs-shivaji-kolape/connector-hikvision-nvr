@@ -140,6 +140,7 @@ def get_video_recording_details(config, params):
 
 def download_video(config, params):
     hik = hikvision(config)
+    create_attachment= params.get('create_fortisoar_attachment')
     url = config.get('server_url').replace("http://", "")
     url_final = url.replace("https://", "")
     file_name = str(params.get('videoname'))
@@ -152,9 +153,12 @@ def download_video(config, params):
     path = join(settings.TMP_FILE_ROOT, file_name)
     with open(path, 'wb') as fp:
         fp.write(video_content)
-    attach_response = upload_file_to_cyops(file_path=file_name, filename=file_name,
+    if create_attachment:
+        attach_response = upload_file_to_cyops(file_path=file_name, filename=file_name,
                                            name=file_name, create_attachment=True)
-    return attach_response
+        return attach_response
+    else:
+        return {'file_name': file_name, 'file_path': path}
 
 
 def _check_health(config):
